@@ -211,5 +211,28 @@
      function deleteTab(){
         $("#lName, #fName, #compareDate").val("");
     }
-    
+
+
+    $('#btnsave').click(function(event)
+    {
+        if (persons.length==0)
+            return;
+        if (typeof(Storage) !== "undefined")
+        {
+            localStorage.persons=JSON.stringify(persons);
+        }
+        
+    });
+
+    $('#btnload').click(function(event)
+    {
+        if (typeof(Storage) !== "undefined")
+        {
+            persons=JSON.parse(localStorage.persons);
+            printTable();
+        }
+        
+    });
+
+
 })(jQuery);
